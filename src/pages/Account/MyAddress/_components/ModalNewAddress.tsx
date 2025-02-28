@@ -8,6 +8,7 @@ import { CheckboxGroupProps } from 'antd/es/checkbox';
 import { useCreateAddress } from '~/hooks/mutations/address/useCreateAddress';
 import { IPayloadCreateAddress } from '~/interfaces/address';
 import { useGetdetailAddress } from '~/hooks/queries/address/useGetDetailAddress';
+import { useUpdateAddress } from '~/hooks/mutations/address/useUpdateAddress';
 export type IStateAddress = {
     province: string | null;
     district: string | null;
@@ -16,10 +17,11 @@ export type IStateAddress = {
     districtId: string | null;
 };
 export default function ModalNewAddress({ children, id }: { children: ReactNode; id?: string }) {
-    const { data } = useGetdetailAddress(id as string);
     const [isOpen, setOpen] = useState(false);
+    const { data } = useGetdetailAddress(id as string, isOpen);
     const { data: provinces } = useGetProvinces();
     const { mutate, isPending } = useCreateAddress();
+    const { mutate: updateMutate, isPending: isPendingUpdate } = useUpdateAddress(id as string);
     const [address, setAddress] = useState<IStateAddress>({
         district: null,
         province: null,
@@ -43,6 +45,18 @@ export default function ModalNewAddress({ children, id }: { children: ReactNode;
                 province: data?.province,
                 district: data?.district,
                 ward: data?.ward,
+                default: data.default,
+                type: data.type,
+                districtId: data.districtId,
+                provinceId: data.provinceId,
+                wardCode: data.ward,
+            });
+            setAddress({
+                district: data.district,
+                districtId: String(data.districtId),
+                province: data.province,
+                provinceId: String(data.provinceId),
+                ward: data.ward,
             });
         }
     }, [data, form]);
@@ -56,14 +70,25 @@ export default function ModalNewAddress({ children, id }: { children: ReactNode;
             district: address.district as string,
             ward: address.ward as string,
             default: values.default,
+            districtId: Number(address.districtId),
+            provinceId: Number(address.provinceId),
             type: values.type,
         };
-        mutate(payload, {
-            onSuccess: () => {
-                setOpen(false);
-                form.resetFields();
-            },
-        });
+        if (id) {
+            updateMutate(payload, {
+                onSuccess: () => {
+                    setOpen(false);
+                    form.resetFields();
+                },
+            });
+        } else {
+            mutate(payload, {
+                onSuccess: () => {
+                    setOpen(false);
+                    form.resetFields();
+                },
+            });
+        }
     };
     const handleSelectProvinceChange = (value: string, option: any) => {
         if (option) {
@@ -224,7 +249,7 @@ export default function ModalNewAddress({ children, id }: { children: ReactNode;
                                     disabled={isPending}
                                     className='flex w-full cursor-pointer items-center justify-center rounded-md bg-black px-4 py-4 text-xs font-medium text-white uppercase duration-300 hover:bg-cyan-500'
                                 >
-                                    {isPending ? <Spin /> : 'Thêm mới'}
+                                    {isPending || isPendingUpdate ? <Spin /> : 'Thêm mới'}
                                 </button>
                             </div>
                         </Form>

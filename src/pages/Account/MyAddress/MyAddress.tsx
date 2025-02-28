@@ -37,7 +37,10 @@ export default function MyAddress() {
                                         {!item.default && <PopUpRemoveAddress id={item._id} />}
                                     </div>
                                 </div>
-                                <div className='mt-4'>
+                                <p className='mt-2 text-sm'>
+                                    Số điện thoại: <span className='font-bold'>{item.phone}</span>
+                                </p>
+                                <div className='mt-2'>
                                     <p className='text-gray-500'>
                                         {item.address}, {item.ward}, {item.district}, {item.province}, {item.country}
                                     </p>

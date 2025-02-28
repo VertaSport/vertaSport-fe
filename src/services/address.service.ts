@@ -13,7 +13,7 @@ export const addressService = {
     },
     async updateAddress(id: string, body: IPayloadCreateAddress) {
         const data = await instance.patch<IPayloadCreateAddress, IServerResponse<IAddress>>(
-            `/address/create/${id}`,
+            `/address/update/${id}`,
             body
         );
         return data;

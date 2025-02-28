@@ -9,6 +9,8 @@ export interface IAddress {
     ward: string;
     type: string;
     address: string;
+    provinceId: number;
+    districtId: number;
     default: boolean;
 }
 
@@ -17,6 +19,8 @@ export type IPayloadCreateAddress = {
     phone: string;
     country: string;
     province: string;
+    provinceId: number;
+    districtId: number;
     district: string;
     ward: string;
     address: string;
