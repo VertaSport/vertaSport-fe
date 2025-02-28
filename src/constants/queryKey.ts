@@ -25,4 +25,8 @@ export const QUERY_KEY = {
     ORDERS: {
         ROOT: 'ORDERS',
     },
+
+    ADDRESS: {
+        ROOT: 'ADDRESS',
+    },
 };

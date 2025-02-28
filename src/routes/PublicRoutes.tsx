@@ -8,6 +8,7 @@ import {
     AuthPage,
     CartDetail,
     HomePage,
+    MyAddressPage,
     MyDetailOrder,
     MyOrders,
     PaymentPage,
@@ -77,7 +78,9 @@ const PublicRoutes = [
             {
                 path: '/account',
                 element: (
-                    <AccountLayout/>
+                    <ProtectedLogged type='NOTLOG'>
+                        <AccountLayout/>
+                    </ProtectedLogged>
                 ),
                 errorElement: <ErrorPage />,
                 children: [
@@ -89,9 +92,7 @@ const PublicRoutes = [
                         path: 'profile',
                         element: (
                             <Suspense>
-                                <ProtectedLogged type='NOTLOG'>
                                     <Profile />
-                                </ProtectedLogged>
                             </Suspense>
                         ),
                     },
@@ -99,9 +100,7 @@ const PublicRoutes = [
                         path: 'my-orders',
                         element: (
                             <Suspense>
-                                <ProtectedLogged type='NOTLOG'>
                                     <MyOrders />
-                                </ProtectedLogged>
                             </Suspense>
                         ),
                     },
@@ -109,9 +108,15 @@ const PublicRoutes = [
                         path: 'my-orders/:id',
                         element: (
                             <Suspense>
-                                <ProtectedLogged type='NOTLOG'>
                                     <MyDetailOrder />
-                                </ProtectedLogged>
+                            </Suspense>
+                        ),
+                    },
+                    {
+                        path: 'my-address',
+                        element: (
+                            <Suspense>
+                                    <MyAddressPage />
                             </Suspense>
                         ),
                     },

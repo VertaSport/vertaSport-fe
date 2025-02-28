@@ -24,6 +24,7 @@ export const UpdateColor = lazy(() => import('~/pages/Admin/_color_/UpdateColor'
 export const SizeList = lazy(() => import('~/pages/Admin/_size_/'));
 export const CreateSize = lazy(() => import('~/pages/Admin/_size_/CreateSize'));
 export const UpdateSize = lazy(() => import('~/pages/Admin/_size_/UpdateSize'));
+export const MyAddressPage = lazy(()=> import('~/pages/Account/MyAddress/MyAddress'));
 
 export const Suspense = ({ children }: { children: React.ReactNode }) => {
     return <React.Suspense fallback={<Loader />}>{children}</React.Suspense>;

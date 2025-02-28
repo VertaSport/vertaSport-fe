@@ -31,7 +31,7 @@ const AccountLayout = () => {
                         </li>
 
                         <li>
-                            <Link to='/' className='text-sm leading-7'>
+                            <Link to='/account/my-address' className='text-sm leading-7'>
                                 Thông tin giao hàng
                             </Link>
                         </li>
