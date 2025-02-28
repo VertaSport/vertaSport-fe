@@ -12,6 +12,7 @@ export const MyOrders = lazy(() => import('~/pages/Account/MyOrders/MyOrders'));
 export const MyDetailOrder = lazy(() => import('~/pages/Account/MyOrders/OrderDetail/OrderDetailPage'));
 export const ShippingAddressPage = lazy(() => import('~/pages/Checkout/ShippingAddress/ShippingAddress'));
 export const PaymentPage = lazy(() => import('~/pages/Checkout/MethodPayment/MethodPayment'));
+export const MyAddressPage = lazy(()=> import('~/pages/Account/MyAddress/MyAddress'));
 
 // Admin
 export const ProductsList = lazy(() => import('~/pages/Admin/Product/ProductList'));
@@ -24,7 +25,6 @@ export const UpdateColor = lazy(() => import('~/pages/Admin/_color_/UpdateColor'
 export const SizeList = lazy(() => import('~/pages/Admin/_size_/'));
 export const CreateSize = lazy(() => import('~/pages/Admin/_size_/CreateSize'));
 export const UpdateSize = lazy(() => import('~/pages/Admin/_size_/UpdateSize'));
-export const MyAddressPage = lazy(()=> import('~/pages/Account/MyAddress/MyAddress'));
 
 export const Suspense = ({ children }: { children: React.ReactNode }) => {
     return <React.Suspense fallback={<Loader />}>{children}</React.Suspense>;

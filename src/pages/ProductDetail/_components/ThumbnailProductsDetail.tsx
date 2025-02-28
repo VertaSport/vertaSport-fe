@@ -35,6 +35,12 @@ export default function ThumbnailProductsDetail({
         const indexOfColor = variants?.findIndex((variant) => variant.color._id === selectedColor?.color._id) ?? 0;
         setIndexImage(indexOfColor >= 0 ? indexOfColor : 0);
     }, [selectedColor, variants]);
+    useEffect(() => {
+        if (swiperRef.current) {
+            swiperRef.current.swiper.slideTo(indexImage - 1);
+        }
+    }, [indexImage]);
+
     return (
         <div className='flex gap-5'>
             <div className='relative h-[80vh] w-[30%] overflow-hidden'>

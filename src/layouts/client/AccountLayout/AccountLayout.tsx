@@ -6,7 +6,7 @@ const AccountLayout = () => {
     const username = useTypedSelector((state) => state.auth.user?.name);
 
     return (
-        <div className='w-full max-w-7xl xl:mx-auto'>
+        <div className='mx-6 w-full max-w-7xl xl:mx-auto'>
             {/* BREADCRUMB */}
             <BreadcrumbDisplay />
 
