@@ -24,14 +24,14 @@ export default function CashPaymentModal({
         setOpen(false);
     };
 
+    const totalPriceNonFeeShipping = checkOutInfor.totalPrice - checkOutInfor.shippingFee;
     const discount =
         checkOutInfor.voucher?.discountType === 'percentage'
             ? Math.min(
-                  checkOutInfor.totalPrice * ((checkOutInfor.voucher?.voucherDiscount ?? 0) / 100),
+                  totalPriceNonFeeShipping * ((checkOutInfor.voucher?.voucherDiscount ?? 0) / 100),
                   checkOutInfor.voucher?.maxDiscountAmount ?? Infinity
               )
             : (checkOutInfor.voucher?.voucherDiscount ?? 0);
-
     const calTotalPriceWithVoucher = checkOutInfor.totalPrice - discount;
 
     const handleConfirm = () => {
