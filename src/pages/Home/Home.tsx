@@ -48,7 +48,7 @@ export default function HomePage() {
                     <ProductWrapper<IProductDetail[]>
                         title='SẢN PHẨM MỚI'
                         description='Những sản phẩm xu hướng thời trang mới'
-                        data={bestSellingData?.data.data}
+                        data={newestData?.data.data}
                         isPending={isPendingBestSelling}
                     />
                 </div>
@@ -56,7 +56,7 @@ export default function HomePage() {
                     <ProductWrapper<IProductDetail[]>
                         title='SẢN PHẨM BÁN CHẠY'
                         description='Những sản phẩm được mua nhiều nhất ở trên hệ thống'
-                        data={newestData?.data.data}
+                        data={bestSellingData?.data.data}
                         isPending={isPendingNewest}
                     />
                 </div>
