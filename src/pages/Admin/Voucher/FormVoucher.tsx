@@ -217,15 +217,18 @@ const FormVoucher = () => {
                         rules={[
                             { required: true, message: 'Vui lòng chọn ngày bắt đầu!' },
                             {
-                                validator: (_, value) =>
-                                    value && value.isBefore(moment())
-                                        ? Promise.reject('Ngày bắt đầu phải lớn hơn ngày hiện tại')
-                                        : Promise.resolve(),
+                                validator: (_, value) => {
+                                    if (value && value.startOf('day').isSameOrBefore(moment().startOf('day'))) {
+                                        return Promise.reject('Ngày bắt đầu phải lớn hơn ngày hiện tại');
+                                    }
+                                    return Promise.resolve();
+                                },
                             },
                         ]}
                     >
-                        <DatePicker showTime placeholder='Chọn thời gian bắt đầu' />
+                        <DatePicker placeholder='Chọn ngày bắt đầu' />
                     </Form.Item>
+
                     <Form.Item<IVoucherDTO>
                         label='Ngày kết thúc'
                         name='endDate'
