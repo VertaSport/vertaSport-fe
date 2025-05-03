@@ -22,7 +22,7 @@ const Header = (props: { sidebarOpen: boolean; setSidebarOpen: (arg0: boolean) =
                             <img src={logo} alt='Admin Logo' className='h-8 w-8 object-contain' />
                         </div>
                         <div className='hidden sm:block'>
-                            <span className='text-xl font-semibold text-gray-900 dark:text-white'>Verta Store </span>
+                            <span className='text-xl font-semibold text-gray-900 dark:text-white'>Verta Sport</span>
                             <span className='ml-2 text-sm font-medium text-gray-500 dark:text-gray-400'>
                                 | Admin Dashboard
                             </span>
