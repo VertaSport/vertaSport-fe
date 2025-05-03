@@ -218,6 +218,9 @@ const FormVoucher = () => {
                             { required: true, message: 'Vui lòng chọn ngày bắt đầu!' },
                             {
                                 validator: (_, value) => {
+                                    if (id) {
+                                        return Promise.resolve();
+                                    }
                                     if (value && value.startOf('day').isBefore(moment().startOf('day'))) {
                                         return Promise.reject('Ngày bắt đầu phải từ ngày hiện tại trở đi');
                                     }
